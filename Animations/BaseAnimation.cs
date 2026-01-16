@@ -1,8 +1,7 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
-namespace Services.LayeredUIService.Animations
+namespace ppl.ServiceManagement.LayeredUIService.Animations
 {
     [RequireComponent(typeof(RectTransform))]
     public abstract class BaseAnimation : MonoBehaviour

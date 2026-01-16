@@ -1,8 +1,8 @@
 using System;
-using Services.LayeredUIService.Animations;
+using ppl.ServiceManagement.LayeredUIService.Animations;
 using UnityEngine;
 
-namespace Services.LayeredUIService
+namespace ppl.ServiceManagement.LayeredUIService
 {
     [RequireComponent(typeof(Slide))]
     [RequireComponent(typeof(Instant))]

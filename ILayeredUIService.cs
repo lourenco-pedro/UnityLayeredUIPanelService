@@ -1,4 +1,4 @@
-namespace Services.LayeredUIService
+namespace ppl.ServiceManagement.LayeredUIService
 {
     public interface ILayeredUIService : IService
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Services.LayeredUIService
+namespace ppl.ServiceManagement.LayeredUIService
 {
     public interface ILayeredPanel
     {

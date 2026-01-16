@@ -3,7 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Services.LayeredUIService.Animations
+namespace ppl.ServiceManagement.LayeredUIService.Animations
 {
     public class Instant : BaseAnimation
     {

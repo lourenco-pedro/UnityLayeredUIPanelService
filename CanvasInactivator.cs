@@ -1,30 +1,30 @@
 using System;
-using R3;
+using System.Collections;
 using UnityEngine;
 
-namespace Services.LayeredUIService
+namespace ppl.ServiceManagement.LayeredUIService
 {
     public class CanvasInactivator : MonoBehaviour
     {
-        
-        IDisposable _inactivatorDisposable;
-        
+        Coroutine _inactivatorDisposable;
+        WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
+
         void OnEnable()
         {
-            _inactivatorDisposable = Observable
-                .Interval(TimeSpan.FromSeconds(1))
-                .Subscribe((_)=> DisableInactiveCanvas());
+            _inactivatorDisposable = StartCoroutine(IEDisableCheck());
+        }
+
+        private IEnumerator IEDisableCheck()
+        {
+            yield return _waitForSeconds;
+            if (transform.childCount == 0)
+                gameObject.SetActive(false);
         }
 
         private void OnDisable()
         {
-            _inactivatorDisposable?.Dispose();
-        }
-
-        void DisableInactiveCanvas()
-        {
-            if(transform.childCount == 0)
-                gameObject.SetActive(false);
+            if (_inactivatorDisposable != null)
+                StopCoroutine(_inactivatorDisposable);
         }
     }
 }

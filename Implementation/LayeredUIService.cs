@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
-using Unity.VisualScripting;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Services.LayeredUIService.Implementation
+namespace ppl.ServiceManagement.LayeredUIService.Implementation
 {
     public class LayeredUIService : ILayeredUIService
     {
@@ -19,7 +19,7 @@ namespace Services.LayeredUIService.Implementation
         
         public string Name => nameof(LayeredUIService);
         
-        public Task AsyncSetup()
+        public Task AsyncSetup(Dictionary<string, object> args = null)
         {
             return Task.CompletedTask;
         }
@@ -34,7 +34,6 @@ namespace Services.LayeredUIService.Implementation
             
             instantiatedPanel.transform.localScale = Vector3.one;
             instantiatedPanel.transform.localPosition = Vector3.zero;
-            UniTask.SwitchToMainThread();
             
             int hashCode = instantiatedPanel.GetHashCode();
             
@@ -54,7 +53,6 @@ namespace Services.LayeredUIService.Implementation
             
             ipanel.Transform.localScale = Vector3.one;
             ipanel.Transform.localPosition = Vector3.zero;
-            UniTask.SwitchToMainThread();
             
             int hashCode = instantiatedPanel.GetHashCode();
             
@@ -126,9 +124,9 @@ namespace Services.LayeredUIService.Implementation
             
             string name = "[LAYER]";
             Canvas newCanvas = new GameObject(name).AddComponent<Canvas>();
-            CanvasScaler canvasScaler = newCanvas.AddComponent<CanvasScaler>();
-            CanvasInactivator canvasInactivator = newCanvas.AddComponent<CanvasInactivator>();
-            GraphicRaycaster graphicRaycaster = newCanvas.AddComponent<GraphicRaycaster>();
+            CanvasScaler canvasScaler = newCanvas.gameObject.AddComponent<CanvasScaler>();
+            CanvasInactivator canvasInactivator = newCanvas.gameObject.AddComponent<CanvasInactivator>();
+            GraphicRaycaster graphicRaycaster = newCanvas.gameObject.AddComponent<GraphicRaycaster>();
             
             newCanvas.gameObject.SetActive(startInactive == false);
             newCanvas.renderMode = RenderMode.ScreenSpaceOverlay;

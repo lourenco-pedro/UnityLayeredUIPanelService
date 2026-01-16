@@ -2,13 +2,13 @@ using System;
 using UnityEngine;
 using DG.Tweening;
 
-namespace Services.LayeredUIService.Animations
+
+namespace ppl.ServiceManagement.LayeredUIService.Animations
 {
     public class Slide : BaseAnimation
     {
         public override void Display(Action onFinished)
         {
-            Debug.Log(Transform.sizeDelta.x);
             Vector2 startPosition = Vector2.right * Transform.rect.width;
 
             Transform.anchoredPosition = startPosition;
