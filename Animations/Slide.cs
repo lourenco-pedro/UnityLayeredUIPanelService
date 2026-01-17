@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using DG.Tweening;
 
 namespace ppl.ServiceManagement.LayeredUIService.Animations
 {
@@ -8,23 +7,29 @@ namespace ppl.ServiceManagement.LayeredUIService.Animations
     {
         public override void Display(Action onFinished)
         {
-            RectTransform rectTransform = Transform;
+            RectTransform rectTransform = transform as RectTransform;
+
+            if (null == rectTransform)
+                return;
+
             Vector2 startPosition = Vector2.right * rectTransform.rect.width;
 
             rectTransform.anchoredPosition = startPosition;
-
-            rectTransform.DOAnchorPos(Vector2.zero, .2f);
+            rectTransform.AnimatePosition(Vector2.zero, .2f);
         }
-        
+
         public override void Reverse(Action onFinished)
         {
-            RectTransform rectTransform = Transform;
+            RectTransform rectTransform = transform as RectTransform;
+
+            if (null == rectTransform)
+                return;
+
             Vector2 toPosition = Vector2.right * rectTransform.rect.width;
 
             rectTransform.anchoredPosition = Vector2.zero;
-            
-            rectTransform.DOAnchorPos(toPosition, 0.2f)
-                .OnComplete(()=>
+
+            rectTransform.AnimatePosition(toPosition, 0.2f, () =>
                 {
                     onFinished?.Invoke();
                     GameObject.Destroy(gameObject, 2);

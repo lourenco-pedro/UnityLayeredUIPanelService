@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using DG.Tweening;
 using UnityEngine;
 
 namespace ppl.ServiceManagement.LayeredUIService.Animations
@@ -39,15 +38,15 @@ namespace ppl.ServiceManagement.LayeredUIService.Animations
             
             yield return new WaitForEndOfFrame();
 
-            _canvasGroup.transform.DOScale(Vector3.one, 0.2f);
-            DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1, .2f).OnComplete(()=> onFinished?.Invoke());
+            _canvasGroup.transform.AnimateLocalScale(Vector3.one, 0.2f);
+            this.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1, .2f, ()=> onFinished?.Invoke());
         }
         
         IEnumerator IEFadeOut(Action onFinished)
         {
             _canvasGroup.alpha = 1;
             yield return new WaitForEndOfFrame();
-            DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0, .2f).OnComplete(()=> onFinished?.Invoke());
+            this.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0, .2f, ()=> onFinished?.Invoke());
         }
     }
 }
