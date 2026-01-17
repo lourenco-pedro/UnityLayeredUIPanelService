@@ -2,27 +2,28 @@ using System;
 using UnityEngine;
 using DG.Tweening;
 
-
 namespace ppl.ServiceManagement.LayeredUIService.Animations
 {
     public class Slide : BaseAnimation
     {
         public override void Display(Action onFinished)
         {
-            Vector2 startPosition = Vector2.right * Transform.rect.width;
+            RectTransform rectTransform = Transform;
+            Vector2 startPosition = Vector2.right * rectTransform.rect.width;
 
-            Transform.anchoredPosition = startPosition;
+            rectTransform.anchoredPosition = startPosition;
 
-            Transform.DOAnchorPos(Vector2.zero, .2f);
+            rectTransform.DOAnchorPos(Vector2.zero, .2f);
         }
         
         public override void Reverse(Action onFinished)
         {
-            Vector2 toPosition = Vector2.right * Transform.rect.width;
+            RectTransform rectTransform = Transform;
+            Vector2 toPosition = Vector2.right * rectTransform.rect.width;
 
-            Transform.anchoredPosition = Vector2.zero;
+            rectTransform.anchoredPosition = Vector2.zero;
             
-            Transform.DOAnchorPos(toPosition, 0.2f)
+            rectTransform.DOAnchorPos(toPosition, 0.2f)
                 .OnComplete(()=>
                 {
                     onFinished?.Invoke();
