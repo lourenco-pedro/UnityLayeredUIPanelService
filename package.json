@@ -1,7 +1,7 @@
 {
   "name": "com.ppl.servicesmanagement.layereduiservice",
   "displayName": "Unity Layered UI Service",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "unity": "2021.3",
   "description": "A Unity package that provides a layered UI panel management system with animation support. This service automatically handles canvas layer organization, panel instantiation, and smooth animations for UI panels.",
   "author": {

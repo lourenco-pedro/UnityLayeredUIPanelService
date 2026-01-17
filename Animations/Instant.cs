@@ -40,14 +40,14 @@ namespace ppl.ServiceManagement.LayeredUIService.Animations
             yield return new WaitForEndOfFrame();
 
             _canvasGroup.transform.DOScale(Vector3.one, 0.2f);
-            _canvasGroup.DOFade(1, .2f).OnComplete(()=> onFinished?.Invoke());
+            DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1, .2f).OnComplete(()=> onFinished?.Invoke());
         }
         
         IEnumerator IEFadeOut(Action onFinished)
         {
             _canvasGroup.alpha = 1;
             yield return new WaitForEndOfFrame();
-            _canvasGroup.DOFade(0, .2f).OnComplete(()=> onFinished?.Invoke());
+            DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0, .2f).OnComplete(()=> onFinished?.Invoke());
         }
     }
 }
