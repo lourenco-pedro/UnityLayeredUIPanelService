@@ -27,17 +27,6 @@ https://github.com/lourenco-pedro/UnityServiceSystem.git
 3. Select "Add package from git URL..."
 4. Paste: `https://github.com/lourenco-pedro/UnityServiceSystem.git`
 
-### 2. DOTween
-Download and import DOTween from the official website:
-
-**Download:** https://dotween.demigiant.com/download.php
-
-**Installation:**
-1. Download the `.unitypackage` file from the link above
-2. In Unity, go to Assets > Import Package > Custom Package
-3. Select the downloaded DOTween package
-4. Import all files
-
 ## Installation
 
 Add this package to your Unity project via Package Manager:
